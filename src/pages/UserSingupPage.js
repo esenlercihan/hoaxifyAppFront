@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React from 'react';
+import { signUp } from '../api/apiCall';
 
 class UserSignupPage extends React.Component {
 
@@ -20,18 +20,30 @@ class UserSignupPage extends React.Component {
         });
     };
 
-    onClickSignUp = (event) => {
+    onClickSignUp = async (event) => {
         event.preventDefault();
         this.setState({pendingApiCall : true});
         let {username, displayName, password} = this.state;
         let body = {username,displayName,password};
-        axios.post("/api/1.0/users", body)
+        try {
+            const response = await signUp(body);
+        }
+        catch(err) {
+            
+        }
+        finally{
+            this.setState({pendingApiCall : false});
+        }
+        //requestlerde promise kullanimi yerine async ve await den faydalanılabilir.
+        /*
+        signUp(body)
         .then((response) => {
             this.setState({pendingApiCall : false});
         })
         .catch((error) => {
             this.setState({pendingApiCall : false});
         });
+        */
     };
 
     render() {

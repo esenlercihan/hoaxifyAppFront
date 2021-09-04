@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import UserSignupPage from './UserSingupPage';
+import UserSignupPage from './pages/UserSingupPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
